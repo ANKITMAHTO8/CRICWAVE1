@@ -1,50 +1,15 @@
+import React from 'react';
 
-import React, { useState, useEffect } from 'react';
-
-export default function LiveScoreboard() {
-  const [score, setScore] = useState({
-    teamA: 'Team A',
-    teamB: 'Team B',
-    runs: 120,
-    wickets: 3,
-    overs: '14.2',
-    batsmen: [
-      { name: 'Ankit', runs: 45, balls: 30 },
-      { name: 'Aditya', runs: 20, balls: 18 }
-    ],
-    bowler: { name: 'Saurav', overs: '3.2', runs: 20, wickets: 1 }
-  });
-
-  useEffect(() => {
-    const interval = setInterval(() => {
-      setScore(prev => ({
-        ...prev,
-        runs: prev.runs + 1,
-        overs: (parseFloat(prev.overs) + 0.1).toFixed(1)
-      }));
-    }, 5000);
-    return () => clearInterval(interval);
-  }, []);
-
+function App() {
   return (
-    <div style={{ fontFamily: 'Arial', maxWidth: 600, margin: 'auto', padding: 20 }}>
-      <h1 style={{ fontSize: 28, fontWeight: 'bold', marginBottom: 10 }}>CricWave Live Scoreboard</h1>
-      <div style={{ fontSize: 20, marginBottom: 8 }}>
-        {score.teamA} vs {score.teamB}
-      </div>
-      <div style={{ fontSize: 32, fontWeight: 'bold', marginBottom: 16 }}>
-        {score.runs}/{score.wickets} ({score.overs} ov)
-      </div>
-      <div style={{ marginBottom: 16 }}>
-        <h2 style={{ fontSize: 20 }}>Batsmen</h2>
-        {score.batsmen.map((b, i) => (
-          <div key={i}>{b.name}: {b.runs} ({b.balls})</div>
-        ))}
-      </div>
-      <div>
-        <h2 style={{ fontSize: 20 }}>Current Bowler</h2>
-        <div>{score.bowler.name}: {score.bowler.overs} overs, {score.bowler.runs} runs, {score.bowler.wickets} wickets</div>
-      </div>
+    <div style={{ fontFamily: 'Arial', padding: '2rem', textAlign: 'center' }}>
+      <h1>CricWave Live Scoreboard</h1>
+      <h2>Team A vs Team B</h2>
+      <p>Score: 120/3 (14.2 ov)</p>
+      <p>Batsmen: Ankit - 45(30), Aditya - 20(18)</p>
+      <p>Bowler: Saurav - 3.2 overs, 20 runs, 1 wicket</p>
     </div>
   );
 }
+
+export default App;
