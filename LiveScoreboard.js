@@ -27,7 +27,7 @@ export default function LiveScoreboard() {
   }, []);
 
   return (
-    <div style={{ fontFamily: 'Arial, sans-serif', maxWidth: 600, margin: 'auto', padding: 20 }}>
+    <div style={{ fontFamily: 'Arial', maxWidth: 600, margin: 'auto', padding: 20 }}>
       <h1 style={{ fontSize: 28, fontWeight: 'bold', marginBottom: 10 }}>CricWave Live Scoreboard</h1>
       <div style={{ fontSize: 20, marginBottom: 8 }}>
         {score.teamA} vs {score.teamB}
@@ -37,8 +37,8 @@ export default function LiveScoreboard() {
       </div>
       <div style={{ marginBottom: 16 }}>
         <h2 style={{ fontSize: 20 }}>Batsmen</h2>
-        {score.batsmen.map((batsman, i) => (
-          <div key={i}>{batsman.name}: {batsman.runs} ({batsman.balls})</div>
+        {score.batsmen.map((b, i) => (
+          <div key={i}>{b.name}: {b.runs} ({b.balls})</div>
         ))}
       </div>
       <div>
